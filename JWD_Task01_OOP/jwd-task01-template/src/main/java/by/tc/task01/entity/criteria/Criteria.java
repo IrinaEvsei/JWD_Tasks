@@ -1,7 +1,6 @@
 package by.tc.task01.entity.criteria;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Criteria<E> {
 
@@ -10,7 +9,5 @@ public class Criteria<E> {
 	public void add(E searchCriteria, Object value) {
 		criteria.put(searchCriteria, value);
 	}
-	
-	// you may add your own code here
 
 }
