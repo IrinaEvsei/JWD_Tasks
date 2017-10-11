@@ -7,24 +7,37 @@ import by.tc.task01.entity.criteria.Criteria;
 import by.tc.task01.service.ApplianceService;
 import by.tc.task01.service.validation.Validator;
 
+import java.util.List;
+
 public class ApplianceServiceImpl implements ApplianceService{
+
+	public static final DAOFactory factory = DAOFactory.getInstance();
 
 	@Override
 	public <E> Appliance find(Criteria<E> criteria) {
-		if (!Validator.criteriaValidator(criteria)) {
+		if (!criteriaValidator(criteria)) {
 			return null;
 		}
-		
-		DAOFactory factory = DAOFactory.getInstance();
-		ApplianceDAO applianceDAO = factory.getApplianceDAO();
-		
-		Appliance appliance = applianceDAO.find(criteria);
-		
-		// you may add your own code here
-		
-		return appliance;
+
+		ApplianceDAO applianceDAO = getDAO();
+		return applianceDAO.find(criteria);
 	}
 
-}
+	@Override
+	public <E> List<Appliance> findList(Criteria<E> criteria) {
+		if (!criteriaValidator(criteria)) {
+			return null;
+		}
 
-//you may add your own new classes
+		ApplianceDAO applianceDAO = getDAO();
+		return applianceDAO.findList(criteria);
+	}
+
+	public ApplianceDAO getDAO(){
+		return factory.getApplianceDAO();
+	}
+
+	public <E> boolean criteriaValidator(Criteria<E> criteria){
+		return Validator.criteriaValidator(criteria);
+	}
+}

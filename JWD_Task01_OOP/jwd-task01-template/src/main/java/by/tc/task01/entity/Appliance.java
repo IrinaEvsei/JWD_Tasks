@@ -2,13 +2,26 @@ package by.tc.task01.entity;
 
 public class Appliance {
 
-//--------------------------------
-    private String s = "Appliance : ";
-    public void append(String a){s+=a;}
-    public void electronic(){append(" [electronic appliance] ");}
-    public void electric(){append(" [electric appliance] ");}
-    public String toString(){return s;}
-//--------------------------------
+    private String name;
 
-	// you may add your own code here
+    public Appliance() {
+    }
+
+    public Appliance(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String toString(){
+        StringBuilder builder = new StringBuilder();
+        builder.append("Appliance Name").append(" - ").append(getName()).append(" ");
+        return builder.toString();
+    }
 }

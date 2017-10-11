@@ -1,25 +1,15 @@
 package by.tc.task01.entity;
 
-public class Refrigerator extends Appliance{
+public class Refrigerator extends Appliance {
 
-    //--------------------------------------
     private int powerConsumption;
     private int weight;
-    private  int freezerCapacity;
+    private int freezerCapacity;
     private int overallCapacity;
     private int height;
     private int width;
 
-    public Refrigerator() {}
-
-    public Refrigerator(int powerConsumption, int weight, int freezerCapacity, int overallCapacity, int height, int width) {
-        this.powerConsumption = powerConsumption;
-        this.weight = weight;
-        this.freezerCapacity = freezerCapacity;
-        this.overallCapacity = overallCapacity;
-        this.height = height;
-        this.width = width;
-    }
+    public Refrigerator(String name) {super(name);}
 
     public int getPowerConsumption() {
         return powerConsumption;
@@ -70,46 +60,14 @@ public class Refrigerator extends Appliance{
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Refrigerator that = (Refrigerator) o;
-
-        if (getPowerConsumption() != that.getPowerConsumption()) return false;
-        if (getWeight() != that.getWeight()) return false;
-        if (getFreezerCapacity() != that.getFreezerCapacity()) return false;
-        if (getOverallCapacity() != that.getOverallCapacity()) return false;
-        if (getHeight() != that.getHeight()) return false;
-        return getWidth() == that.getWidth();
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getPowerConsumption();
-        result = 31 * result + getWeight();
-        result = 31 * result + getFreezerCapacity();
-        result = 31 * result + getOverallCapacity();
-        result = 31 * result + getHeight();
-        result = 31 * result + getWidth();
-        return result;
-    }
-
-    @Override
     public String toString() {
-        return "Refrigerator{" +
-                "powerConsumption=" + powerConsumption +
-                ", weight=" + weight +
-                ", freezerCapacity=" + freezerCapacity +
-                ", overallCapacity=" + overallCapacity +
-                ", height=" + height +
-                ", width=" + width +
-                '}';
+        StringBuilder builder = new StringBuilder(super.toString());
+        builder.append("Power consumption").append(" = ").append(getPowerConsumption()).append(" ");
+        builder.append("Weight").append(" = ").append(getWeight()).append(" ");
+        builder.append("Freezer capacity").append(" = ").append(getFreezerCapacity()).append(" ");
+        builder.append("Overall capacity").append(" = ").append(getOverallCapacity()).append(" ");
+        builder.append("Height").append(" = ").append(getHeight()).append(" ");
+        builder.append("Width").append(" = ").append(getWidth()).append(" ");
+        return builder.toString();
     }
-    public void electric(){super.electric();}
-    public void electronic(){append(" Refrigerator is not an electronic appliance.\n");}
-
-    //--------------------------------------
-
-    // you may add your own code here
 }

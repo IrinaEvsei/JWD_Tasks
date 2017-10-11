@@ -1,7 +1,7 @@
 package by.tc.task01.entity;
 
 public class VacuumCleaner extends Appliance{
-    //--------------------------------------------
+
     private int powerConsumption;
     private String filterType;
     private String bagType;
@@ -9,16 +9,7 @@ public class VacuumCleaner extends Appliance{
     private int motorSpeedRegulation;
     private int cleaningWidth;
 
-    public VacuumCleaner() {}
-
-    public VacuumCleaner(int powerConsumption, String filterType, String bagType, String wandType, int motorSpeedRegulation, int cleaningWidth) {
-        this.powerConsumption = powerConsumption;
-        this.filterType = filterType;
-        this.bagType = bagType;
-        this.wandType = wandType;
-        this.motorSpeedRegulation = motorSpeedRegulation;
-        this.cleaningWidth = cleaningWidth;
-    }
+    public VacuumCleaner(String name) {super(name);}
 
     public int getPowerConsumption() {
         return powerConsumption;
@@ -69,46 +60,14 @@ public class VacuumCleaner extends Appliance{
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        VacuumCleaner that = (VacuumCleaner) o;
-
-        if (getPowerConsumption() != that.getPowerConsumption()) return false;
-        if (getMotorSpeedRegulation() != that.getMotorSpeedRegulation()) return false;
-        if (getCleaningWidth() != that.getCleaningWidth()) return false;
-        if (!getFilterType().equals(that.getFilterType())) return false;
-        if (!getBagType().equals(that.getBagType())) return false;
-        return getWandType().equals(that.getWandType());
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getPowerConsumption();
-        result = 31 * result + getFilterType().hashCode();
-        result = 31 * result + getBagType().hashCode();
-        result = 31 * result + getWandType().hashCode();
-        result = 31 * result + getMotorSpeedRegulation();
-        result = 31 * result + getCleaningWidth();
-        return result;
-    }
-
-    @Override
     public String toString() {
-        return "VacuumCleaner{" +
-                "powerConsumption=" + powerConsumption +
-                ", filterType='" + filterType + '\'' +
-                ", bagType='" + bagType + '\'' +
-                ", wandType='" + wandType + '\'' +
-                ", motorSpeedRegulation=" + motorSpeedRegulation +
-                ", cleaningWidth=" + cleaningWidth +
-                '}';
+        StringBuilder builder = new StringBuilder(super.toString());
+        builder.append("Power consumption").append(" = ").append(getPowerConsumption()).append(" ");
+        builder.append("Filter type").append(" = ").append(getFilterType()).append(" ");
+        builder.append("Bag type").append(" = ").append(getBagType()).append(" ");
+        builder.append("Wand type").append(" = ").append(getWandType()).append(" ");
+        builder.append("Motor speed regulation").append(" = ").append(getMotorSpeedRegulation()).append(" ");
+        builder.append("Cleaning width").append(" = ").append(getCleaningWidth()).append(" ");
+        return builder.toString();
     }
-    public void electric(){super.electric();}
-    public void electronic(){append(" Vacuum Cleaner is not an electronic appliance.\n");}
-
-    //--------------------------------------------
-
-    // you may add your own code here
 }

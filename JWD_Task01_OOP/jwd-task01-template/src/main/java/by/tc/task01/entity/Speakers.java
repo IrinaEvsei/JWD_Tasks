@@ -1,19 +1,14 @@
 package by.tc.task01.entity;
 
 public class Speakers extends Appliance{
-    //--------------------------------------------
+
     private int powerConsumption;
     private int numberOfSpeakers;
     private String frequencyRange;
     private int cordLength;
 
-    public Speakers() {}
-
-    public Speakers(int powerConsumption, int numberOfSpeakers, String frequencyRange, int cordLength) {
-        this.powerConsumption = powerConsumption;
-        this.numberOfSpeakers = numberOfSpeakers;
-        this.frequencyRange = frequencyRange;
-        this.cordLength = cordLength;
+    public Speakers(String name) {
+        super(name);
     }
 
     public int getPowerConsumption() {
@@ -49,41 +44,12 @@ public class Speakers extends Appliance{
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Speakers speakers = (Speakers) o;
-
-        if (getPowerConsumption() != speakers.getPowerConsumption()) return false;
-        if (getNumberOfSpeakers() != speakers.getNumberOfSpeakers()) return false;
-        if (getCordLength() != speakers.getCordLength()) return false;
-        return getFrequencyRange().equals(speakers.getFrequencyRange());
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getPowerConsumption();
-        result = 31 * result + getNumberOfSpeakers();
-        result = 31 * result + getFrequencyRange().hashCode();
-        result = 31 * result + getCordLength();
-        return result;
-    }
-
-    @Override
     public String toString() {
-        return "Speakers{" +
-                "powerConsumption=" + powerConsumption +
-                ", numberOfSpeakers=" + numberOfSpeakers +
-                ", frequencyRange='" + frequencyRange + '\'' +
-                ", cordLength=" + cordLength +
-                '}';
+        StringBuilder builder = new StringBuilder(super.toString());
+        builder.append("Power consumption").append(" = ").append(getPowerConsumption()).append(" ");
+        builder.append("Number of speakers").append(" = ").append(getNumberOfSpeakers()).append(" ");
+        builder.append("Frequency range").append(" = ").append(getFrequencyRange()).append(" ");
+        builder.append("Cord length").append(" = ").append(getCordLength()).append(" ");
+        return builder.toString();
     }
-
-    public void electric(){super.electric();}
-    public void electronic(){append(" Speakers is not an electronic appliance.\n");}
-
-//--------------------------------------------
-
-	// you may add your own code here
 }

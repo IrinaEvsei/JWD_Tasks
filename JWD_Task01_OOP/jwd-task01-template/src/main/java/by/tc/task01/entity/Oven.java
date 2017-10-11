@@ -1,7 +1,7 @@
 package by.tc.task01.entity;
 
 public class Oven extends Appliance{
-    //--------------------------------------------------
+
     private int powerConsumption;
     private int weight;
     private int capacity;
@@ -9,16 +9,7 @@ public class Oven extends Appliance{
     private double height;
     private double width;
 
-    public Oven() {}
-
-    public Oven(int powerConsumption, int weight, int capacity, int depth, double height, double width) {
-        this.powerConsumption = powerConsumption;
-        this.weight = weight;
-        this.capacity = capacity;
-        this.depth = depth;
-        this.height = height;
-        this.width = width;
-    }
+    public Oven(String name) {super(name);}
 
     public int getPowerConsumption() {
         return powerConsumption;
@@ -69,51 +60,14 @@ public class Oven extends Appliance{
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Oven oven = (Oven) o;
-
-        if (getPowerConsumption() != oven.getPowerConsumption()) return false;
-        if (getWeight() != oven.getWeight()) return false;
-        if (getCapacity() != oven.getCapacity()) return false;
-        if (getDepth() != oven.getDepth()) return false;
-        if (Double.compare(oven.getHeight(), getHeight()) != 0) return false;
-        return Double.compare(oven.getWidth(), getWidth()) == 0;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = getPowerConsumption();
-        result = 31 * result + getWeight();
-        result = 31 * result + getCapacity();
-        result = 31 * result + getDepth();
-        temp = Double.doubleToLongBits(getHeight());
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(getWidth());
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
-    }
-
-    @Override
     public String toString() {
-        return "Oven{" +
-                "powerConsumption=" + powerConsumption +
-                ", weight=" + weight +
-                ", capacity=" + capacity +
-                ", depth=" + depth +
-                ", height=" + height +
-                ", width=" + width +
-                '}';
+        StringBuilder builder = new StringBuilder(super.toString());
+        builder.append("Power consumption").append(" = ").append(getPowerConsumption()).append(" ");
+        builder.append("Weight").append(" = ").append(getWeight()).append(" ");
+        builder.append("Capacity").append(" = ").append(getCapacity()).append(" ");
+        builder.append("Depth").append(" = ").append(getDepth()).append(" ");
+        builder.append("Height").append(" = ").append(getHeight()).append(" ");
+        builder.append("Width").append(" = ").append(getWidth()).append(" ");
+        return builder.toString();
     }
-
-    public void electric(){super.electric();}
-    public void electronic(){append(" Oven is not an electronic appliance.\n");}
-
-    //--------------------------------------------------
-
-    // you may add your own code here
 }

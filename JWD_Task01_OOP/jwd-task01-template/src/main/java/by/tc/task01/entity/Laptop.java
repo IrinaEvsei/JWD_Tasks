@@ -2,24 +2,14 @@ package by.tc.task01.entity;
 
 public class Laptop extends Appliance{
 
-    //--------------------------------------------------
     private double batteryCapacity;
     private String os;
     private int memoryROM;
     private int systemMemory;
     private double cpu;
-    private int displayInchs;
+    private int displayInches;
 
-    public Laptop() {}
-
-    public Laptop(double batteryCapacity, String os, int memoryROM, int systemMemory, double cpu, int displayInchs) {
-        this.batteryCapacity = batteryCapacity;
-        this.os = os;
-        this.memoryROM = memoryROM;
-        this.systemMemory = systemMemory;
-        this.cpu = cpu;
-        this.displayInchs = displayInchs;
-    }
+    public Laptop(String name) {super(name);}
 
     public double getBatteryCapacity() {
         return batteryCapacity;
@@ -61,60 +51,23 @@ public class Laptop extends Appliance{
         this.cpu = cpu;
     }
 
-    public int getDisplayInchs() {
-        return displayInchs;
+    public int getDisplayInches() {
+        return displayInches;
     }
 
-    public void setDisplayInchs(int displayInchs) {
-        this.displayInchs = displayInchs;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Laptop)) return false;
-
-        Laptop laptop = (Laptop) o;
-
-        if (Double.compare(laptop.getBatteryCapacity(), getBatteryCapacity()) != 0) return false;
-        if (getMemoryROM() != laptop.getMemoryROM()) return false;
-        if (getSystemMemory() != laptop.getSystemMemory()) return false;
-        if (Double.compare(laptop.getCpu(), getCpu()) != 0) return false;
-        if (getDisplayInchs() != laptop.getDisplayInchs()) return false;
-        return getOs().equals(laptop.getOs());
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        temp = Double.doubleToLongBits(getBatteryCapacity());
-        result = (int) (temp ^ (temp >>> 32));
-        result = 31 * result + getOs().hashCode();
-        result = 31 * result + getMemoryROM();
-        result = 31 * result + getSystemMemory();
-        temp = Double.doubleToLongBits(getCpu());
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + getDisplayInchs();
-        return result;
+    public void setDisplayInches(int displayInches) {
+        this.displayInches = displayInches;
     }
 
     @Override
     public String toString() {
-        return "Laptop{" +
-                "batteryCapacity=" + batteryCapacity +
-                ", os='" + os + '\'' +
-                ", memoryROM=" + memoryROM +
-                ", systemMemory=" + systemMemory +
-                ", cpu=" + cpu +
-                ", displayInchs=" + displayInchs +
-                '}';
+        StringBuilder builder = new StringBuilder(super.toString());
+        builder.append("Battery capacity").append(" = ").append(getBatteryCapacity()).append(" ");
+        builder.append("OS").append(" = ").append(getOs()).append(" ");
+        builder.append("MemoryROM").append(" = ").append(getMemoryROM()).append(" ");
+        builder.append("System memory").append(" = ").append(getSystemMemory()).append(" ");
+        builder.append("CPU").append(" = ").append(getCpu()).append(" ");
+        builder.append("Display Inches").append(" = ").append(getDisplayInches()).append(" ");
+        return builder.toString();
     }
-
-    public void electric(){append(" Laptop is not an electrical appliance.\n");}
-    public void electronic(){super.electronic();}
-
-//--------------------------------------------------
-
-    // you may add your own code here
 }
